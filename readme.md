@@ -1,5 +1,3 @@
----
-
 <div style="display: flex; flex-direction: column; border: 1px solid #ddd; font-size: 16px; font-family: sans-serif; line-height: 1.2em;">
 <div style="border-bottom: 1px solid #ddd; width: 100%; padding: 10px 20px; color: #666;">From: Sophia Lewis (sophia.lewis@omni.co)</div>
 <div style="border-bottom: 1px solid #ddd; width: 100%; padding: 10px 20px; color: #666;">Subject: Unlocking Insights in Euphoria's User Engagement Data</div>
@@ -36,7 +34,6 @@ CONFIDENTIALITY NOTICE: This message contains proprietary information of OmniCo 
 
 </div>
 </div>
-
 
 ---
 
