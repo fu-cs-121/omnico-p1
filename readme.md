@@ -14,7 +14,7 @@ We've been making some exciting strides with our social VR platform, **Euphoria*
 
 We've gathered a wealth of data since their deployment, and some of the patterns emerging—especially with **DeepPulse**—are quite intriguing. It appears to influence users' moods in unexpected ways, offering us a unique opportunity to understand and perhaps even guide user experiences more effectively.
 
-I've set up a secure repository for you on OmniGit, our internal collaboration platform. You can access it here: [OmniGit Repository Link](https://omnigit.omnico.com/repos/euphoria-engagement). The dataset includes user session logs, engagement metrics, mood ratings, and other relevant information.
+I've set up a secure repository for you on OmniGit, our internal collaboration platform. You can access it using the secure link below. The dataset includes user session logs, engagement metrics, mood ratings, and other relevant information.
 
 As you explore this data, feel free to consult the **OmniCodex**, our internal guide filled with programming patterns and best practices. It should serve as a helpful companion on your analytical journey.
 
@@ -27,6 +27,10 @@ Warm regards,
 Sophia Lewis
 Lead Research Analyst
 OmniVerse Division, OmniCo
+
+<div style="font-size: 11px; color: #666">
+CONFIDENTIALITY NOTICE: This message contains proprietary information of OmniCo and is protected by the OmniCo Cybernetic Legal AI (CLAIR) system. Unauthorized use or disclosure is strictly prohibited and may result in immediate action, including significant penalties. By proceeding, you acknowledge and agree to these terms across all timelines. Remember, at OmniCo, we’re not just shaping the future—we own it.
+</div>
 
 </div>
 </div>
