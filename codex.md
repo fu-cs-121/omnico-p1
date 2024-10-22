@@ -84,7 +84,7 @@ Data read from files is often in string format. To perform calculations, convert
 
 ```python
 number_str = '42'
-number_int = int(number_str)    # 42 as an integer
+number_int = int(number_str)     # 42 as an integer
 number_float = float(number_str)  # 42.0 as a float
 ```
 
@@ -142,6 +142,22 @@ students = {
 alice_math_score = students['Alice']['math']  # 90
 ```
 
+### Updating Nested Dictionaries
+
+You can update values within a nested dictionary by specifying the keys in sequence.
+
+**Example: Updating a nested dictionary**
+
+```python
+# Update Bob's science score
+students['Bob']['science'] = 82
+
+# Add a new subject for Charlie
+students['Charlie']['english'] = 88
+```
+
+- **Note:** If the key does not exist, it will be added to the dictionary.
+
 ---
 
 ## 4. Control Flow Statements
@@ -196,6 +212,44 @@ employees = {
 for emp_id, name in employees.items():
     print(f'ID: {emp_id}, Name: {name}')
 ```
+
+### Looping Through Nested Dictionaries and Computing Values
+
+You can loop through a nested dictionary to perform calculations and update the dictionary.
+
+**Example: Calculating average scores and adding them to the dictionary**
+
+```python
+# Existing nested dictionary of students and their subject scores
+students = {
+    'Alice': {'math': 90, 'science': 85, 'english': 88},
+    'Bob': {'math': 75, 'science': 82, 'english': 79},
+    'Charlie': {'math': 95, 'science': 100, 'english': 92}
+}
+
+# Loop through each student to calculate the average score
+for student, scores in students.items():
+    total = sum(scores.values())
+    count = len(scores)
+    average = total / count
+    # Add the average score back into the student's dictionary
+    students[student]['average'] = average
+
+# The students dictionary now includes the average score
+print(students)
+```
+
+**Output:**
+
+```python
+{
+    'Alice': {'math': 90, 'science': 85, 'english': 88, 'average': 87.66666666666667},
+    'Bob': {'math': 75, 'science': 82, 'english': 79, 'average': 78.66666666666667},
+    'Charlie': {'math': 95, 'science': 100, 'english': 92, 'average': 95.66666666666667}
+}
+```
+
+- **Explanation:** We used a loop to calculate the average score for each student and added a new key-value pair `'average': average` to their nested dictionary.
 
 ---
 
