@@ -55,6 +55,75 @@ with open('data.csv', 'r') as file:
         print(line)
 ```
 
+### Reading and Processing CSV Files
+
+Often, data is stored in CSV (Comma-Separated Values) files. You can read and process CSV files by splitting each line into fields.
+
+**Example: Reading a CSV file and processing data**
+
+```python
+# Open the CSV file
+with open('employees.csv', 'r') as file:
+    # Read and discard the header line
+    header = file.readline()
+    # Process each line in the file
+    for line in file:
+        # Remove leading/trailing whitespace characters (including newline)
+        line = line.strip()
+        # Split the line into a list of values based on commas
+        fields = line.split(',')
+        # Access individual fields
+        employee_id = fields[0]
+        name = fields[1]
+        department = fields[2]
+        salary = fields[3]
+        # Output the processed data
+        print(f"ID: {employee_id}, Name: {name}, Department: {department}, Salary: {salary}")
+```
+
+**Sample `employees.csv` content:**
+
+```
+EmployeeID,Name,Department,Salary
+E001,Alice Smith,Sales,75000
+E002,Bob Johnson,Engineering,82000
+E003,Charlie Lee,Marketing,68000
+```
+
+**Output of the code:**
+
+```
+ID: E001, Name: Alice Smith, Department: Sales, Salary: 75000
+ID: E002, Name: Bob Johnson, Department: Engineering, Salary: 82000
+ID: E003, Name: Charlie Lee, Department: Marketing, Salary: 68000
+```
+
+- **Explanation:**
+  - `line.strip()` removes any leading/trailing whitespace, including newline characters.
+  - `fields = line.split(',')` splits the line into a list of values.
+  - `fields[0]` accesses the first element in the list (EmployeeID).
+  - `fields[1:]` accesses elements from index 1 to the end (Name, Department, Salary).
+
+### Slicing Lists
+
+You can access specific parts of a list using slicing.
+
+**Example: Accessing parts of a list**
+
+```python
+fields = ['E001', 'Alice Smith', 'Sales', '75000']
+
+# Access the first field
+employee_id = fields[0]  # 'E001'
+
+# Access all fields except the first
+other_fields = fields[1:]  # ['Alice Smith', 'Sales', '75000']
+```
+
+- **Explanation:**
+  - `fields[0]` retrieves the first item in the list.
+  - `fields[1:]` slices the list from index 1 to the end.
+
 ### Writing Files
 
 To output data or results to a file, you can write to a file using the following pattern:
@@ -117,11 +186,14 @@ A list is an ordered collection of items.
 **Example: Creating and accessing a list**
 
 ```python
-# Create a list of numbers
-numbers = [10, 20, 30, 40, 50]
+# Create a list of departments
+departments = ['Sales', 'Engineering', 'Marketing', 'HR']
 
-# Access the first item
-first_number = numbers[0]  # 10
+# Access the first department
+first_department = departments[0]  # 'Sales'
+
+# Access departments from index 1 to the end
+remaining_departments = departments[1:]  # ['Engineering', 'Marketing', 'HR']
 ```
 
 ### Dictionaries
@@ -149,15 +221,15 @@ Dictionaries can contain other dictionaries as values.
 **Example: Nested dictionary**
 
 ```python
-# Create a dictionary of students with their scores
-students = {
-    'Alice': {'math': 90, 'science': 85},
-    'Bob': {'math': 75, 'science': 80},
-    'Charlie': {'math': 95, 'science': 100}
+# Create a dictionary of employees with their details
+employees = {
+    'E001': {'name': 'Alice Smith', 'department': 'Sales', 'salary': 75000},
+    'E002': {'name': 'Bob Johnson', 'department': 'Engineering', 'salary': 82000},
+    'E003': {'name': 'Charlie Lee', 'department': 'Marketing', 'salary': 68000}
 }
 
 # Access nested values
-alice_math_score = students['Alice']['math']  # 90
+alice_department = employees['E001']['department']  # 'Sales'
 ```
 
 ### Updating Nested Dictionaries
@@ -167,11 +239,11 @@ You can update values within a nested dictionary by specifying the keys in seque
 **Example: Updating a nested dictionary**
 
 ```python
-# Update Bob's science score
-students['Bob']['science'] = 82
+# Update Bob's salary
+employees['E002']['salary'] = 85000
 
-# Add a new subject for Charlie
-students['Charlie']['english'] = 88
+# Add a new key-value pair to Charlie's details
+employees['E003']['email'] = 'charlie.lee@omnico.com'
 ```
 
 - **Note:** If the key does not exist, it will be added to the dictionary.
@@ -180,18 +252,11 @@ students['Charlie']['english'] = 88
 
 You can extract all the keys or values from a dictionary and convert them into a list.
 
-**Example: Getting a list of keys**
+**Example: Getting a list of employee IDs**
 
 ```python
-# Given a dictionary of users
-user_data = {
-    'U001': {'name': 'Alice', 'age': 30},
-    'U002': {'name': 'Bob', 'age': 25},
-    'U003': {'name': 'Charlie', 'age': 35}
-}
-
-# Get a list of user IDs
-user_ids = list(user_data.keys())  # ['U001', 'U002', 'U003']
+# Get a list of employee IDs
+employee_ids = list(employees.keys())  # ['E001', 'E002', 'E003']
 ```
 
 ---
@@ -202,17 +267,17 @@ user_ids = list(user_data.keys())  # ['U001', 'U002', 'U003']
 
 Use `if`, `elif`, and `else` to execute code based on conditions.
 
-**Example: Basic if statement**
+**Example: Checking employee performance**
 
 ```python
-score = 85
+sales = 120000
 
-if score >= 90:
-    print('Grade: A')
-elif score >= 80:
-    print('Grade: B')
+if sales >= 100000:
+    print('Excellent performance')
+elif sales >= 70000:
+    print('Good performance')
 else:
-    print('Grade: C')
+    print('Needs improvement')
 ```
 
 ---
@@ -226,10 +291,10 @@ Use `for` loops to iterate over sequences like lists or dictionaries.
 **Example: Iterating over a list**
 
 ```python
-fruits = ['apple', 'banana', 'cherry']
+departments = ['Sales', 'Engineering', 'Marketing']
 
-for fruit in fruits:
-    print(fruit)
+for dept in departments:
+    print(dept)
 ```
 
 ### Iterating Over Dictionaries
@@ -253,39 +318,41 @@ for emp_id, name in employees.items():
 
 You can loop through a nested dictionary to perform calculations and update the dictionary.
 
-**Example: Calculating average scores and adding them to the dictionary**
+**Example: Calculating bonuses and adding them to the dictionary**
 
 ```python
-# Existing nested dictionary of students and their subject scores
-students = {
-    'Alice': {'math': 90, 'science': 85, 'english': 88},
-    'Bob': {'math': 75, 'science': 82, 'english': 79},
-    'Charlie': {'math': 95, 'science': 100, 'english': 92}
+# Existing nested dictionary of employees and their salaries
+employees = {
+    'E001': {'name': 'Alice Smith', 'department': 'Sales', 'salary': 75000},
+    'E002': {'name': 'Bob Johnson', 'department': 'Engineering', 'salary': 85000},
+    'E003': {'name': 'Charlie Lee', 'department': 'Marketing', 'salary': 68000}
 }
 
-# Loop through each student to calculate the average score
-for student, scores in students.items():
-    total = sum(scores.values())
-    count = len(scores)
-    average = total / count
-    # Add the average score back into the student's dictionary
-    students[student]['average'] = average
+# Loop through each employee to calculate bonuses
+for emp_id, details in employees.items():
+    salary = details['salary']
+    # Calculate bonus: 10% of salary
+    bonus = salary * 0.10
+    # Add the bonus to the employee's details
+    employees[emp_id]['bonus'] = bonus
 
-# The students dictionary now includes the average score
-print(students)
+# The employees dictionary now includes the bonus amount
+print(employees)
 ```
 
 **Output:**
 
 ```python
 {
-    'Alice': {'math': 90, 'science': 85, 'english': 88, 'average': 87.66666666666667},
-    'Bob': {'math': 75, 'science': 82, 'english': 79, 'average': 78.66666666666667},
-    'Charlie': {'math': 95, 'science': 100, 'english': 92, 'average': 95.66666666666667}
+    'E001': {'name': 'Alice Smith', 'department': 'Sales', 'salary': 75000, 'bonus': 7500.0},
+    'E002': {'name': 'Bob Johnson', 'department': 'Engineering', 'salary': 85000, 'bonus': 8500.0},
+    'E003': {'name': 'Charlie Lee', 'department': 'Marketing', 'salary': 68000, 'bonus': 6800.0}
 }
 ```
 
-- **Explanation:** We used a loop to calculate the average score for each student and added a new key-value pair `'average': average` to their nested dictionary.
+- **Explanation:**
+  - For each employee, we calculated a bonus equal to 10% of their salary.
+  - We added a new key `'bonus'` to each employee's dictionary.
 
 ### While Loops
 
@@ -321,77 +388,43 @@ for number in range(10):
 
 You can perform arithmetic operations using `+`, `-`, `*`, `/`, and `%`.
 
-**Example: Calculating an average**
+**Example: Calculating the average salary**
 
 ```python
-total = 250
-count = 5
-average = total / count  # 50.0
+total_salary = 228000
+number_of_employees = 3
+average_salary = total_salary / number_of_employees  # 76000.0
 ```
 
 ### Using min() and max() Functions
 
 The `min()` and `max()` functions return the smallest and largest of the input values, respectively.
 
-**Example: Limiting a value to a maximum**
+**Example: Limiting salary increases**
 
 ```python
-increase = 50
-max_increase = 30
-adjusted_increase = min(increase, max_increase)  # adjusted_increase is 30
+increase = 5000
+max_increase = 4000
+adjusted_increase = min(increase, max_increase)  # adjusted_increase is 4000
 ```
 
-**Example: Ensuring a value is at least a minimum**
+**Example: Ensuring a minimum bonus**
 
 ```python
-score = 45
-min_score = 50
-adjusted_score = max(score, min_score)  # adjusted_score is 50
+bonus = 2000
+min_bonus = 2500
+adjusted_bonus = max(bonus, min_bonus)  # adjusted_bonus is 2500
 ```
-
-### Distributing Values with Constraints
-
-When distributing a total amount among multiple items with individual limits, you may need to:
-
-- **Calculate Equal Distribution**
-
-  ```python
-  total_amount = 100
-  num_items = 5
-  equal_share = total_amount / num_items  # 20.0
-  ```
-
-- **Apply Individual Limits Using min()**
-
-  ```python
-  for item in items:
-      max_allowable = item['max_limit']
-      item_increase = min(equal_share, max_allowable)
-      item['value'] += item_increase
-  ```
-
-- **Handle Remaining Amounts**
-
-  ```python
-  remaining_amount = total_amount - sum_of_distributed_amounts
-  while remaining_amount > 0:
-      for item in items:
-          if remaining_amount <= 0:
-              break
-          additional_increase = min(item['max_limit'] - item['value'], remaining_amount)
-          item['value'] += additional_increase
-          remaining_amount -= additional_increase
-  ```
 
 ### Calculating Percentage Increases
 
-**Example: Calculating the percentage increase**
+**Example: Calculating the percentage increase in sales**
 
 ```python
-original_value = 80
-new_value = 100
-increase = new_value - original_value
-percentage_increase = (increase / original_value) * 100  # 25.0%
+previous_sales = 100000
+current_sales = 125000
+increase = current_sales - previous_sales
+percentage_increase = (increase / previous_sales) * 100  # 25.0%
 ```
 
 ### Avoiding Division by Zero
@@ -401,10 +434,10 @@ Always ensure the denominator is not zero before dividing.
 **Example: Safe division**
 
 ```python
-if count != 0:
-    average = total / count
+if number_of_employees != 0:
+    average_salary = total_salary / number_of_employees
 else:
-    average = 0  # Handle the zero division case appropriately
+    average_salary = 0  # Handle the zero division case appropriately
 ```
 
 ### Casting Values During Calculations
@@ -414,8 +447,8 @@ When performing calculations that result in float values, you may need to cast t
 **Example: Converting a float to an integer**
 
 ```python
-value = 23.75
-integer_value = int(value)  # 23
+value = 76.75
+integer_value = int(value)  # 76
 ```
 
 - **Note:** Casting to `int` truncates the decimal part.
@@ -442,9 +475,9 @@ Format strings to include variables and control numeric precision.
 
 ```python
 name = 'Alice'
-score = 92.567
+salary = 75000
 
-print(f'{name} scored {score:.2f} points.')  # 'Alice scored 92.57 points.'
+print(f'{name} has a salary of ${salary:.2f}')  # 'Alice has a salary of $75000.00'
 ```
 
 - `:.2f` formats the number to two decimal places.
@@ -456,12 +489,12 @@ When writing formatted data to a file, you can use f-strings and special charact
 **Example: Writing formatted text to a file**
 
 ```python
-with open('report.txt', 'w') as file:
-    file.write('User Report\n')
-    file.write('-----------\n')
-    file.write('UserID\tName\t\tScore\n')
-    for user_id, data in user_data.items():
-        line = f"{user_id}\t{data['name']}\t{data['score']}\n"
+with open('employee_report.txt', 'w') as file:
+    file.write('Employee Report\n')
+    file.write('---------------\n')
+    file.write('ID\tName\t\t\tDepartment\tSalary\n')
+    for emp_id, data in employees.items():
+        line = f"{emp_id}\t{data['name']}\t{data['department']}\t${data['salary']}\n"
         file.write(line)
 ```
 
@@ -473,7 +506,7 @@ You can use formatting options to align text and numbers.
 
 ```python
 # Left-align text and format numbers with precision
-line = f"{user_id:<5}{data['name']:<15}{data['score']:>5.2f}\n"
+line = f"{emp_id:<5}{data['name']:<20}{data['department']:<15}${data['salary']:>10.2f}\n"
 ```
 
 - `<` : Left-align within the available space.
@@ -517,27 +550,24 @@ except ValueError:
 **Example:**
 
 ```python
-# Calculate the average score
-average_score = total_score / number_of_scores
+# Calculate the average salary
+average_salary = total_salary / number_of_employees
 ```
 
 #### Commenting Complex Logic
 
 When implementing complex algorithms or logic, add comments to explain the steps.
 
-**Example: Explaining a distribution algorithm**
+**Example: Explaining a bonus calculation algorithm**
 
 ```python
-# First pass: Distribute the equal share to each user without exceeding the maximum increase
-for user_id in user_ids:
-    # Calculate the maximum allowable increase for this user
-    max_increase = user_data[user_id]['OriginalInteractions'] * 0.25
-    # Determine the increase (minimum of equal share or max allowable)
-    increase = min(equal_share, max_increase)
-    # Update the user's interactions
-    user_data[user_id]['Interactions'] += int(increase)
-    # Subtract the allocated increase from the remaining amount
-    remaining_increase -= increase
+# Loop through each employee to calculate bonus
+for emp_id, details in employees.items():
+    salary = details['salary']
+    # Calculate bonus as 10% of salary
+    bonus = salary * 0.10
+    # Add the bonus to the employee's details
+    details['bonus'] = bonus
 ```
 
 ### Following Style Guidelines
