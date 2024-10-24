@@ -1,6 +1,6 @@
 # OmniCodex: Essential Python Guide for Data Analysis
 
-Welcome to the **OmniCodex**, your comprehensive guide to mastering the fundamental Python concepts needed for data analysis at OmniCo. This guide is designed to help you navigate through your projects with confidence, providing clear explanations and code patterns that you can apply to your work.
+Welcome to the **OmniCodex**, your comprehensive guide to mastering the fundamental Python concepts needed for data analysis at OmniCo. This guide is designed to help you navigate through your projects with confidence, providing clear explanations and code examples that you can apply to your work.
 
 ---
 
@@ -196,6 +196,47 @@ first_department = departments[0]  # 'Sales'
 remaining_departments = departments[1:]  # ['Engineering', 'Marketing', 'HR']
 ```
 
+### Sorting Lists
+
+You can sort lists in ascending or descending order using the `sort()` method or the `sorted()` function.
+
+**Example: Sorting a list of numbers**
+
+```python
+# List of numbers
+numbers = [5, 2, 9, 1, 5, 6]
+
+# Sort the list in ascending order
+numbers.sort()
+print(numbers)  # [1, 2, 5, 5, 6, 9]
+
+# Alternatively, using sorted()
+numbers = [5, 2, 9, 1, 5, 6]
+sorted_numbers = sorted(numbers)
+print(sorted_numbers)  # [1, 2, 5, 5, 6, 9]
+```
+
+**Example: Sorting a list of strings**
+
+```python
+# List of department names
+departments = ['Sales', 'Engineering', 'Marketing', 'HR']
+
+# Sort the list alphabetically
+departments.sort()
+print(departments)  # ['Engineering', 'HR', 'Marketing', 'Sales']
+```
+
+**Sorting in Descending Order**
+
+Use the `reverse=True` parameter to sort in descending order.
+
+```python
+numbers = [5, 2, 9, 1, 5, 6]
+numbers.sort(reverse=True)
+print(numbers)  # [9, 6, 5, 5, 2, 1]
+```
+
 ### Dictionaries
 
 A dictionary stores data in key-value pairs.
@@ -214,6 +255,26 @@ employees = {
 employee_name = employees['E001']  # 'Alice Smith'
 ```
 
+### Sorting Dictionaries
+
+By default, dictionaries in Python 3.7+ maintain insertion order. If you want to get sorted keys or values from a dictionary, you can create a sorted list.
+
+**Example: Sorting dictionary keys**
+
+```python
+# Get a list of sorted employee IDs
+sorted_employee_ids = sorted(employees.keys())
+print(sorted_employee_ids)  # ['E001', 'E002', 'E003']
+```
+
+**Example: Sorting dictionary values**
+
+```python
+# Get a list of sorted employee names
+sorted_employee_names = sorted(employees.values())
+print(sorted_employee_names)  # ['Alice Smith', 'Bob Johnson', 'Charlie Lee']
+```
+
 ### Nested Dictionaries
 
 Dictionaries can contain other dictionaries as values.
@@ -230,6 +291,49 @@ employees = {
 
 # Access nested values
 alice_department = employees['E001']['department']  # 'Sales'
+```
+
+### Sorting a List of Dictionaries by a Key
+
+If you have a list of dictionaries and want to sort it based on a specific key, you can use the `sorted()` function with a `key` parameter.
+
+**Example: Sorting a list of dictionaries by salary**
+
+```python
+# List of employee dictionaries
+employee_list = [
+    {'name': 'Alice Smith', 'department': 'Sales', 'salary': 75000},
+    {'name': 'Bob Johnson', 'department': 'Engineering', 'salary': 82000},
+    {'name': 'Charlie Lee', 'department': 'Marketing', 'salary': 68000}
+]
+
+# Sort the list by salary in ascending order
+sorted_employee_list = sorted(employee_list, key=lambda x: x['salary'])
+
+# Print the sorted list
+for employee in sorted_employee_list:
+    print(f"{employee['name']}: ${employee['salary']}")
+```
+
+**Output:**
+
+```
+Charlie Lee: $68000
+Alice Smith: $75000
+Bob Johnson: $82000
+```
+
+- **Explanation:**
+  - `sorted()` takes the list and a `key` function that tells it how to compare items.
+  - `key=lambda x: x['salary']` means we sort based on the `'salary'` key in each dictionary.
+
+**Sorting in Descending Order**
+
+To sort the list in descending order, add `reverse=True`:
+
+```python
+# Sort the list by salary in descending order
+sorted_employee_list = sorted(employee_list, key=lambda x: x['salary'], reverse=True)
 ```
 
 ### Updating Nested Dictionaries
@@ -334,7 +438,7 @@ for emp_id, details in employees.items():
     # Calculate bonus: 10% of salary
     bonus = salary * 0.10
     # Add the bonus to the employee's details
-    employees[emp_id]['bonus'] = bonus
+    details['bonus'] = bonus
 
 # The employees dictionary now includes the bonus amount
 print(employees)
@@ -561,7 +665,7 @@ When implementing complex algorithms or logic, add comments to explain the steps
 **Example: Explaining a bonus calculation algorithm**
 
 ```python
-# Loop through each employee to calculate bonus
+# Loop through each employee to calculate bonuses
 for emp_id, details in employees.items():
     salary = details['salary']
     # Calculate bonus as 10% of salary
