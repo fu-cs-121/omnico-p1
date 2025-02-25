@@ -2,10 +2,6 @@
 # OmniCo Confidential
 # -------------------
 # This source code contains proprietary information of OmniCo.
-# Unauthorized use, duplication, or distribution is strictly prohibited.
-# Violations may result in immediate action by the OmniCo Cybernetic Legal AI (CLAIR) system.
-# By using this code, you agree to these terms across all possible timelines.
-# Remember, at OmniCo, we're not just shaping the future—we own it.
 # =============================================================================
 
 def main():
@@ -27,28 +23,29 @@ def main():
             'session_count': 0
         }
     }
-    
+
     # Open the CSV file and read data
     with open('euphoria_data.csv', 'r') as file:
         # Skip the header line
         header = file.readline()
-        
+
         # Read each line in the file
         for line in file:
             # Remove any trailing whitespace characters like newline
             line = line.strip()
-            
+
             # Split the line into a list of values
             columns = line.split(',')
-            
+
             # Assign each column to a variable
             user_id = columns[0]
             algorithm = columns[1]
-            
+
             # TODO: Define session_duration and happiness_rating variables and convert them to integers
+            # Hint: Use the int() function to convert strings to integers
             # session_duration = ?
             # happiness_rating = ?
-            
+
             # Update stats based on the algorithm
             if algorithm in stats:
                 stats[algorithm]['total_happiness'] += happiness_rating
@@ -57,7 +54,7 @@ def main():
             else:
                 # Handle any unexpected algorithm names
                 print(f"Unknown algorithm: {algorithm}")
-    
+
     # TODO: Calculate averages for each algorithm
     # For each algorithm in the stats dictionary:
     #   - Calculate avg_happiness = total_happiness / session_count

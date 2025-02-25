@@ -1,37 +1,37 @@
+# Data Analysis Simulation Assignment
+
 {{user.first_name }}, it's your first day at OmniCo and you open your email to see the following message:
 
 <div style="display: flex; flex-direction: column; border: 1px solid #ddd; font-size: 16px; font-family: sans-serif; line-height: 1.2em; box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;">
 <div style="border-bottom: 1px solid #ddd; width: 100%; padding: 10px 20px; color: #666;">From: Sophia Lewis (sophia.lewis@omni.co)</div>
-<div style="border-bottom: 1px solid #ddd; width: 100%; padding: 10px 20px; color: #666;">Subject: Unlocking Insights in Euphoria's User Engagement Data</div>
+<div style="border-bottom: 1px solid #ddd; width: 100%; padding: 10px 20px; color: #666;">Subject: Analyzing Euphoria's User Engagement Data</div>
 <div style="padding:20px 40px;">
 Dear {{user.first_name}},
 
-I trust you're thriving within the limitless realms we're crafting here at OmniCo.
+Welcome to your first day at OmniCo! I hope you're settling in well.
 
-We've been making some exciting strides with our social VR platform, **Euphoria**, aiming to elevate user experiences to unprecedented levels. Recently, we've implemented three distinct content feed algorithms to see how they influence user engagement and overall mood:
+I have an important task for you regarding our social VR platform, **Euphoria**. We've recently implemented three different content feed algorithms to see how they affect user engagement and mood:
 
-- **JoyStream**: Curates content to amplify positivity and happiness.
-- **SerenityFlow**: Focuses on providing calming and peaceful experiences.
-- **DeepPulse**: Delves into a broader spectrum of emotions to deepen user interaction.
+- **JoyStream**: Focuses on positive and uplifting content
+- **SerenityFlow**: Delivers calming and peaceful experiences
+- **DeepPulse**: Presents a wider range of emotional content
 
-We've gathered a wealth of data since their deployment, and some of the patterns emerging—especially with **DeepPulse**—are quite intriguing. It appears to influence users' moods in unexpected ways, offering us a unique opportunity to understand and perhaps even guide user experiences more effectively.
+We've collected data from user sessions with each algorithm, and I'd like you to analyze this information to help us understand which algorithm is performing best.
 
-I've set up a secure repository for you on OmniGit, our internal collaboration platform. You can access it using the secure link below. The dataset includes user session logs, engagement metrics, mood ratings, and other relevant information.
+I've added a data file called `euphoria_data.csv` to your repository. It contains information about each user session, including which algorithm was used, how long the session lasted, and the user's happiness rating after the session.
 
-As you explore this data, feel free to consult the **OmniCodex**, our internal guide filled with programming patterns and best practices. It should serve as a helpful companion on your analytical journey.
+Please analyze this data and prepare a report with your findings. We're particularly interested in which algorithm produces the highest happiness ratings and which one keeps users engaged for the longest time.
 
-We're eager to hear your insights. Sometimes, the most subtle data points can illuminate paths we hadn't considered before. Your fresh perspective might just be the key to unlocking new dimensions of user engagement.
+Looking forward to your insights!
 
-Looking forward to your findings.
-
-Warm regards,
+Best regards,
 
 Sophia Lewis
 Lead Research Analyst
 OmniVerse Division, OmniCo
 
 <div style="font-size: 11px; color: #666">
-CONFIDENTIALITY NOTICE: This message contains proprietary information of OmniCo and is protected by the OmniCo Cybernetic Legal AI (CLAIR) system. Unauthorized use or disclosure is strictly prohibited and may result in immediate action, including significant penalties. By proceeding, you acknowledge and agree to these terms across all timelines. Remember, at OmniCo, we’re not just shaping the future—we own it.
+CONFIDENTIALITY NOTICE: This message contains proprietary information of OmniCo and is protected by the OmniCo Cybernetic Legal AI (CLAIR) system. Unauthorized use or disclosure is strictly prohibited.
 </div>
 
 </div>
@@ -39,62 +39,156 @@ CONFIDENTIALITY NOTICE: This message contains proprietary information of OmniCo 
 
 ---
 
-# Instructions for You
+# Project Instructions
 
-1. **Review the Email Carefully**
+In this assignment, you'll work with a real-world scenario where you need to analyze data to help make business decisions. You'll practice new skills including:
 
-   - Understand what's being asked. Identify the main objectives, and pay attention to any nuances, especially regarding the **DeepPulse** algorithm.
+- Reading data from CSV files
+- Processing and analyzing the data
+- Calculating statistics
+- Presenting findings in a professional format
 
-2. **Design a Specification Document**
+## Learning Objectives
 
-   - Outline your plan for analyzing the data.
-   - Define the questions you aim to answer.
-   - Note any assumptions or considerations.
+- Understand how to read and parse data from files
+- Apply programming concepts to solve real data problems
+- Calculate and interpret basic statistics
+- Present findings effectively
 
-3. **Set Up Your Development Environment**
+## Getting Started
 
-   - Clone the repository from OmniGit using the link below
-     - Copy the repository url from the [classroom link](https://classroom.github.com/a/2DJMmKAd). This is the blue highlighted link after you accept the assignment.
-     - Open a new window in VSCode (File > New Window)
-     - Click the Source Panel (branch icon) and then "Clone Repository"
-     - Paste in the URL and select a location to save the repository
-     - Open the repository folder in VSCode
-     - Add your name to the top part of your `report.md` and commit/push it back to Github
-   - Be sure to reference the [project codex](https://github.com/fu-cs-121/omnico-p1/blob/main/codex.md) as you code through the challenges.
+1. **Set Up Your Project**
 
-4. **Analyze the Data**
+   - Clone the repository from the [classroom link](https://classroom.github.com/a/2DJMmKAd)
+   - Open a new window in VSCode (File > New Window)
+   - Click the Source Panel (branch icon) and then "Clone Repository"
+   - Paste in the URL and select a location to save the repository
+   - Open the repository folder in VSCode
+   - Add your name to the top part of your `report.md` and commit/push it back to Github
 
-   - Use Python to read and process the dataset (this is done for you in this project)
-   - Follow the `TODO: ` comments carefully to complete the code
-   - Perform calculations to determine:
-     - Average mood ratings for each algorithm.
-     - Total number of user sessions per algorithm.
-     - Average session duration for each algorithm.
-   - Look for patterns or anomalies, particularly those related to **DeepPulse**.
+2. **Understanding the Data**
+   - The file `euphoria_data.csv` contains the following columns:
+     - `user_id`: A unique identifier for each user
+     - `algorithm`: Which content algorithm was used (JoyStream, SerenityFlow, or DeepPulse)
+     - `session_duration`: How long the user session lasted, in minutes
+     - `happiness_rating`: The user's self-reported happiness rating after the session (1-10 scale)
 
-5. **Prepare Your Findings**
+## Step-by-Step Tutorial
 
-   - Write a Python script that prints a summary of your findings to the terminal using the output example below
-   - Ensure the output is clear and well-formatted.
+### Step 1: Understanding File I/O in Python
 
-6. **Write a Delivery Report**
+In Python, we can read data from files using the `open()` function. For CSV files, we typically:
 
-   - Write you report in the `report.md` file and follow the template provided.
-   - Document your methodology, observations, and any insights.
-   - Discuss any ethical considerations or unexpected findings.
-   - Use professional language suitable for internal communication.
+1. Open the file
+2. Read each line
+3. Process the data in each line
+4. Close the file when finished
 
-7. **Submit Your Work**
+Here's how we open and read a file:
 
-   - Commit your Python script and delivery report back to the OmniGit repository.
-   - Follow the coding standards outlined in the **OmniCodex**.
-   - Ensure your code is well-documented and easy to follow.
+```python
+# Open the file in read mode ('r')
+with open('filename.csv', 'r') as file:
+    # The 'with' statement automatically closes the file when the block ends
 
----
+    # Read the header line (column names)
+    header = file.readline()
 
-### Example Output
+    # Read the rest of the lines
+    for line in file:
+        # Process each line here
+        print(line)  # This will print each line with newline characters
 
-Afer analyzing the data, you might generate output that looks something like this:
+        # To remove whitespace and newline characters:
+        clean_line = line.strip()
+        print(clean_line)
+```
+
+### Step 2: Parsing CSV Data
+
+CSV (Comma-Separated Values) files store data as text with values separated by commas. To parse each line:
+
+```python
+# Split the line into values using comma as separator
+columns = line.split(',')
+
+# Now 'columns' is a list containing each value from the line
+# For example, if line is "101,JoyStream,45,8", then:
+# columns[0] would be "101" (user_id)
+# columns[1] would be "JoyStream" (algorithm)
+# columns[2] would be "45" (session_duration)
+# columns[3] would be "8" (happiness_rating)
+```
+
+### Step 3: Converting String Values to Numbers
+
+Values read from a file are always strings, even if they represent numbers. To perform calculations, we need to convert them to numeric types:
+
+```python
+# Convert string to integer
+session_duration = int(columns[2])
+
+# Convert string to float (for decimal numbers)
+happiness_rating = int(columns[3])
+```
+
+### Step 4: Organizing Data with Dictionaries
+
+We'll use dictionaries to store and organize our data by algorithm:
+
+```python
+# Initialize a dictionary to store statistics for each algorithm
+stats = {
+    'JoyStream': {
+        'total_happiness': 0,
+        'total_duration': 0,
+        'session_count': 0
+    },
+    'SerenityFlow': {
+        'total_happiness': 0,
+        'total_duration': 0,
+        'session_count': 0
+    },
+    'DeepPulse': {
+        'total_happiness': 0,
+        'total_duration': 0,
+        'session_count': 0
+    }
+}
+```
+
+### Step 5: Your Task - Complete the Program
+
+Now, your job is to complete the provided Python program to:
+
+1. Read the CSV data
+2. Calculate statistics for each algorithm
+3. Determine which algorithm has the highest happiness rating and longest average session duration
+4. Print a formatted report of your findings
+
+Open the file `analyze_euphoria.py` and follow the TODO comments to complete the code.
+
+## Requirements
+
+1. **Complete the Python Script**
+
+   - Follow all TODO comments in the code
+   - Calculate the following for each algorithm:
+     - Average happiness rating
+     - Total number of sessions
+     - Average session duration
+   - Identify which algorithm has the highest average happiness rating
+   - Identify which algorithm has the longest average session duration
+   - Format and print the results
+
+2. **Write a Report**
+   - Complete the `report.md` file with your findings
+   - Include your methodology and any insights you discover
+   - Make sure your report is professional and well-formatted
+
+## Example Output
+
+Your program should produce output similar to this:
 
 ```plaintext
 Euphoria User Engagement Analysis Report
@@ -122,6 +216,19 @@ Longest Average Session Duration:
 - DeepPulse with an average session duration of 45.00 minutes
 ```
 
-By following these steps, you'll not only fulfill the task at hand but also contribute to our collective mission of enhancing user experiences in profound ways. Your analysis could play a pivotal role in shaping the future of Euphoria.
+## Starter Code
 
-Good luck, and don't hesitate to reach out if you have any questions.
+Use the starter code in your `main.py` file to complete this assignment.
+
+Make sure you follow the TODO comments and structure your code according to the instructions provided.
+
+## Submission Instructions
+
+When you've completed the assignment:
+
+1. Make sure your code works correctly and produces the expected output
+2. Make sure your report is complete and professional
+3. Commit and push your changes to your GitHub repository
+4. Submit the link to your repository on Canvas
+
+Good luck, and remember that this assignment is designed to help you learn how to apply programming concepts to real-world data analysis tasks!
